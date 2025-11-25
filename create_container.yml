@@ -19,11 +19,11 @@ stages:
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: |
-            exist=$(az storage container exists --account-name "$(storageAccount)" --name "$(containerName)" --query [exists] -o tsv)
+            exist=$(az storage container exists --account-name "$(storageAccount)" --name "$(containerName)" --auth-mode login --query [exists] -o tsv)
             echo $exist
             if [ "$exist" = "true" ]; then
               echo "Container exist"
             else
               echo "Container does´nt exist"
-              az storage container create --name "$(containerName)" --account-name "$(storageAccount)"
+              az storage container create --name "$(containerName)" --account-name "$(storageAccount)" --auth-mode login
             fi
