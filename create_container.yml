@@ -15,7 +15,7 @@ stages:
     steps:
       - task: AzureCLI@2
         inputs:
-          azureSubscription: 'AzureServiceConnection'
+          azureSubscription: 'test_sa'
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: |
